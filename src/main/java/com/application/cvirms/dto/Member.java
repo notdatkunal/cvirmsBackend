@@ -18,6 +18,7 @@ public class Member {
 	private AccountType type;
 
 	private String address;
+	@OneToOne
 	private Location location;
 	private Long contact;
 	private Long alternateContact;
@@ -26,6 +27,7 @@ public class Member {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Status status;
+	@OneToOne
 	private Document document;
 
 	@OneToMany

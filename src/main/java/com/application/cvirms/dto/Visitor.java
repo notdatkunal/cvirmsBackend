@@ -3,6 +3,8 @@ package com.application.cvirms.dto;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 public class Visitor {
@@ -17,13 +19,14 @@ public class Visitor {
 	private String email;
 	private Long contact;
 	private String address;
+	@OneToOne
 	private Location location;
 	@OneToOne
 	private Document document;
 	private String vehicleNumber;
 
 	@OneToMany
-	private Entry entry;
+	private List<Entry> entries;
 	public Visitor() {
 		super();
 	}

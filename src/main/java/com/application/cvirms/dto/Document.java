@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Document {
     @Id
+    private Integer id;
     private String number;
     @Column(name = "document_name")
     private String name;

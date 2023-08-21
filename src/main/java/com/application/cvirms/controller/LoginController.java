@@ -2,17 +2,19 @@ package com.application.cvirms.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/")
 public class LoginController {
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login(){
         return "welcome to cvirms";
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public String register(){
         return "account created";
     }

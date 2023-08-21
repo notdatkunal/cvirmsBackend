@@ -1,15 +1,13 @@
 package com.application.cvirms.dto;
 
 //created by Akash Tripathi
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 
+@Entity
 public class Entry {
 
 	@Id

@@ -19,7 +19,7 @@ public class Entry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "entry_id")
-	private Integer id;
+	private Integer entryId;
 	@ManyToOne
 	private Member member;
 	@ManyToOne

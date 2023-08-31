@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer documentId;
     private String number;
     @Column(name = "document_name")
     private String name;

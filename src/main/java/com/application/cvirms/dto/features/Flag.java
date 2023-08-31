@@ -2,6 +2,7 @@ package com.application.cvirms.dto.features;
 
 import com.application.cvirms.dto.member.Document;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,6 +28,7 @@ public class Flag
     private Document document;
     @Lob
     private byte[] photoId;
+    @NotNull
     private String reason;
     private List<String> remark;
 

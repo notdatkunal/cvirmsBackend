@@ -12,8 +12,7 @@ public class Guest {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "g_id")
-	private Integer guestId;
+	private Integer Id;
 	@Column(name = "g_name")
 	private String name;
 	@ManyToOne

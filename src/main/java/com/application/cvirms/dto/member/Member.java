@@ -2,8 +2,10 @@ package com.application.cvirms.dto.member;
 
 import com.application.cvirms.dto.geography.Location;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.List;
@@ -16,33 +18,47 @@ import java.util.List;
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "m_id")
-	private Integer memberId;
+	private Integer Id;
 	@Column(nullable = false)
-	private String owner;
+	@NotNull
+	private String firstName;
+	@NotNull
+	@Column(nullable = false)
+	private String middleName;
+	@NotNull
+	@Column(nullable = false)
+	private String lastName;
 
 	@Enumerated(EnumType.STRING)
 	private AccountType type;
-
+	@NotNull
 	private String address;
 	@OneToOne
+	@NotNull
 	private Location location;
+	@NotNull
+	@Column(unique = true,nullable = false)
 	private Long contact;
 	private Long alternateContact;
 	@Column(nullable = false)
+	@NotNull
 	private String email;
-	@Column(nullable = false)
+	@Column(nullable = false,unique = true)
+	@NotNull
 	private String userName;
 	@Column(nullable = false)
+	@NotNull
 	private String password;
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	private Status status=Status.INACTIVE;
 	@OneToOne
 	private Document document;
 
 
 	@OneToMany
 	private List<Entry> entries;
+
+
 
 
 }

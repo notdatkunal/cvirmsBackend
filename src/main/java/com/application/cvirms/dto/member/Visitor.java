@@ -3,6 +3,7 @@ package com.application.cvirms.dto.member;
 
 import com.application.cvirms.dto.geography.Location;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,15 +16,18 @@ import java.util.List;
 public class Visitor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "visitor_id")
-	private Integer visitorId;
+	private Integer Id;
 	@Column(nullable = false)
+	@NotNull
 	private String firstName;
 	@Column(nullable = false)
+	@NotNull
 	private String middleName;
 	@Column(nullable = false)
+	@NotNull
 	private String lastName;
 	@Column(nullable = false)
+	@NotNull
 	private String gender;
 	@Column(nullable = false,unique = true)
 	private String email;
@@ -36,7 +40,6 @@ public class Visitor {
 	@OneToOne
 	private Document document;
 	private String vehicleNumber;
-
 	@OneToMany
 	private List<Entry> entries;
 

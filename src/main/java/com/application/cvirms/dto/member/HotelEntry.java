@@ -3,17 +3,24 @@ package com.application.cvirms.dto.member;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class HotelEntry extends Entry{
 
-    @NotNull
-    private LocalDateTime check_in;
 
-    private LocalDateTime check_out;
+
+
+    private LocalDate checkIn;
+
+    private LocalDate checkOut;
     @OneToMany
     private List<Guest> guests;
 }

@@ -18,13 +18,13 @@ public class Entry {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "entry_id")
-	private Integer entryId;
-	@ManyToOne
+	private Integer Id;
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Member member;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Visitor visitor;
 
+	@Lob
 	private List<String> remark;
 
 

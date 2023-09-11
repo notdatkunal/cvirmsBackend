@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class Member {
 	private Document document;
 
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<Entry> entries;
 
 

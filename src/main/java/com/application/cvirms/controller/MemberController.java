@@ -25,7 +25,7 @@ public class MemberController {
 //    @Qualifier("tenantMemberService")
     public MemberService service;
     @GetMapping
-    public ResponseEntity<List<Entry>> getVisitors(@PathVariable(required = true) Integer memberId){
+    public ResponseEntity<List<HotelEntry>> getVisitors(@PathVariable(required = true) Integer memberId){
         return service.getVisitorsByHotelId(memberId);
     }
 

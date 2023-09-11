@@ -2,13 +2,8 @@ package com.application.cvirms.service;
 
 import com.application.cvirms.dto.features.Emergency;
 import com.application.cvirms.dto.features.Notice;
-import com.application.cvirms.dto.member.Entry;
-import com.application.cvirms.dto.member.HotelEntry;
-import com.application.cvirms.dto.member.Member;
-import com.application.cvirms.dto.member.Visitor;
-import com.application.cvirms.repo.EntryRepository;
-import com.application.cvirms.repo.MemberRepository;
-import com.application.cvirms.repo.VisitorRepository;
+import com.application.cvirms.dto.member.*;
+import com.application.cvirms.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,14 +28,14 @@ public class MemberService {
     public List<Visitor> getVisitorsById(Integer memberId){return new ArrayList<>();}
 
     @Autowired
-    public EntryRepository entryRepository;
+    public HotelEntryRepository entryRepository;
     @Autowired
     public VisitorRepository visitorRepository;
     @Autowired
-    public MemberRepository memberRepository;
+    public HotelRepository memberRepository;
 
     public ResponseEntity addEntry(HotelEntry entry, Integer memberId){
-        var member = memberRepository.getReferenceById(memberId);
+        Hotel member = memberRepository.getReferenceById(memberId);
         entry.setMember(member);
         var entries = member.getEntries();
         entries.add(entry);
@@ -50,11 +45,12 @@ public class MemberService {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<List<Entry>> getVisitorsByHotelId(Integer memberId) {
+    public ResponseEntity<List<HotelEntry>> getVisitorsByHotelId(Integer memberId) {
 
 
-        Member member = memberRepository.getReferenceById(memberId);
+        Hotel member = (Hotel) memberRepository.getReferenceById(memberId);
+        List<HotelEntry> entries = member.getEntries();
 
-        return new ResponseEntity<>(member.getEntries(),HttpStatus.FOUND);
+        return new ResponseEntity<>(entries,HttpStatus.FOUND);
     }
 }

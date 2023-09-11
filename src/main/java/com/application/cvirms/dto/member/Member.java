@@ -1,6 +1,7 @@
 package com.application.cvirms.dto.member;
 
 import com.application.cvirms.dto.geography.Location;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,8 +57,8 @@ public class Member {
 	private Document document;
 
 
-	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	private List<Entry> entries;
+//	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "member")
+//	private List<Entry> entries;
 
 
 

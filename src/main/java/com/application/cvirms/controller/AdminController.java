@@ -1,5 +1,6 @@
 package com.application.cvirms.controller;
 
+import com.application.cvirms.dto.member.Hotel;
 import com.application.cvirms.dto.member.Member;
 import com.application.cvirms.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class AdminController {
     public AdminService service;
 
     @PostMapping("/hotel")
-    public void addHotel(@Validated @RequestBody Member hotelMember){
+    public void addHotel(@Validated @RequestBody Hotel hotelMember){
 
         service.addHotel(hotelMember);
     }

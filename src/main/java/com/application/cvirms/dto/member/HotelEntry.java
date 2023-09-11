@@ -1,7 +1,7 @@
 package com.application.cvirms.dto.member;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,9 @@ import java.util.List;
 public class HotelEntry extends Entry{
 
 
-
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Hotel member;
 
     private LocalDate checkIn;
 

@@ -2,6 +2,9 @@ package com.application.cvirms.dto.member;
 //Created by Akash Tripathi
 
 import com.application.cvirms.dto.geography.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -40,7 +43,8 @@ public class Visitor {
 	@OneToOne
 	private Document document;
 	private String vehicleNumber;
-	@OneToMany
+	@OneToMany(mappedBy = "visitor")
+	@JsonIgnoreProperties
 	private List<Entry> entries;
 
 }

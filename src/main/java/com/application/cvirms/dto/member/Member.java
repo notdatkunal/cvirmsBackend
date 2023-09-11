@@ -55,7 +55,7 @@ public class Member {
 	private Document document;
 
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Entry> entries;
 
 

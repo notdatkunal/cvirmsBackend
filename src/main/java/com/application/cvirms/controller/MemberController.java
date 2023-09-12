@@ -26,7 +26,7 @@ public class MemberController {
     public MemberService service;
     @GetMapping
     public ResponseEntity<List<HotelEntry>> getVisitors(@PathVariable(required = true) Integer memberId){
-        return service.getVisitorsByHotelId(memberId);
+        return service.getVisitorsByHotelId(memberId);  //akash
     }
 
     @PostMapping("/add")

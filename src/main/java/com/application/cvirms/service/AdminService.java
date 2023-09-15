@@ -1,10 +1,8 @@
 package com.application.cvirms.service;
 
 import com.application.cvirms.dto.member.Hotel;
-import com.application.cvirms.dto.member.Member;
 import com.application.cvirms.repo.HotelRepository;
 import com.application.cvirms.repo.LocationRepository;
-import com.application.cvirms.repo.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -36,8 +36,8 @@ public class MemberService {
 
     public ResponseEntity addEntry(HotelEntry entry, Integer memberId){
         Hotel member = memberRepository.getReferenceById(memberId);
-        entry.setMember(member);
-        var entries = member.getEntries();
+//        entry.setMember(member);
+        List<HotelEntry> entries = member.getEntries();
         entries.add(entry);
 
         entryRepository.save(entry);

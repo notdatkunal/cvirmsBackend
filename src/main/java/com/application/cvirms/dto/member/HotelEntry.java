@@ -1,5 +1,6 @@
 package com.application.cvirms.dto.member;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -17,7 +18,7 @@ public class HotelEntry extends Entry{
 
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonBackReference
     private Hotel member;
 
     private LocalDate checkIn;

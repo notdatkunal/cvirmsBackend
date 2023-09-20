@@ -25,6 +25,7 @@ public class Entry {
 //	@JsonIgnore
 //	private Member member;
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Visitor visitor;
 
 	@Lob

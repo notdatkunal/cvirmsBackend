@@ -1,7 +1,7 @@
 package com.application.cvirms.controller;
 
 import com.application.cvirms.dto.features.Emergency;
-import com.application.cvirms.dto.member.TenantEntry;
+//import com.application.cvirms.dto.member.TenantEntry;
 import com.application.cvirms.service.TenantService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;

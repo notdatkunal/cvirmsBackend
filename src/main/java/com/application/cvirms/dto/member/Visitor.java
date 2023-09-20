@@ -2,9 +2,7 @@ package com.application.cvirms.dto.member;
 //Created by Akash Tripathi
 
 import com.application.cvirms.dto.geography.Location;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeId;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -16,6 +14,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+
 public class Visitor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

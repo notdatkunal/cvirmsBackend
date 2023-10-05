@@ -20,16 +20,16 @@ public class Visitor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	@Column(nullable = false)
-	@NotNull
+//	@NotNull
 	private String firstName;
 	@Column(nullable = false)
-	@NotNull
+//	@NotNull
 	private String middleName;
 	@Column(nullable = false)
-	@NotNull
+//	@NotNull
 	private String lastName;
 	@Column(nullable = false)
-	@NotNull
+//	@NotNull
 	private String gender;
 	@Column(nullable = false,unique = true)
 	private String email;
@@ -42,8 +42,9 @@ public class Visitor {
 	@OneToOne
 	private Document document;
 	private String vehicleNumber;
-	@OneToMany(mappedBy = "visitor")
-	@JsonIgnoreProperties
-	private List<Entry> entries;
+//	@OneToMany(mappedBy = "visitor")
+//	@JsonIgnoreProperties
+//	@JsonIgnore
+//	private List<Entry> entries;
 
 }

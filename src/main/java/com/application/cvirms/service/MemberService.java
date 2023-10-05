@@ -36,11 +36,14 @@ public class MemberService {
 
     public ResponseEntity addEntry(HotelEntry entry, Integer memberId){
         Hotel member = memberRepository.getReferenceById(memberId);
+        visitorRepository.save(entry.getVisitor());
 //        entry.setMember(member);
         List<HotelEntry> entries = member.getEntries();
         entries.add(entry);
 
+
         entryRepository.save(entry);
+
         memberRepository.save(member);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

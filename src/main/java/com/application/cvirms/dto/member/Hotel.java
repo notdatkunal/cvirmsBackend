@@ -16,11 +16,11 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Hotel extends Member {
 
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JsonIgnore
+//    @JsonIgnore
     private List<HotelEntry> entries;
 }

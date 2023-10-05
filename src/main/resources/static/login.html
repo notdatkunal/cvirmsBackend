@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+    <title>Home Page</title>
+    <!-- Include Font Awesome CSS for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* Add your CSS styling here */
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url('cvirms-login.jpg'); /* Add the path to your background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center; /* Center the image */
+    text-align: center;
+}
+
+        .container {
+            margin: 100px auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background color */
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 100px; /* Adjust the maximum width of the logo as needed */
+        }
+       /* Style for icons */
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+    z-index: 1; /* Add this line to adjust the z-index */
+}
+
+
+input[type="text"], input[type="password"] {
+    width: 80%;
+    padding: 10px 30px 10px 40px; /* Add padding for the icon */
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+    </style>
+</head>
+<body>
+<div id="response" class="response-message"></div>
+<div class="container">
+    <div class="logo">
+        <img src="cvirms.jpg" alt="CVIRMS Logo"> <!-- Add the path to your logo image -->
+    </div>
+    <h1>Welcome to CVIRMS</h1>
+    <form id="loginForm" onsubmit="submitForm(event)">
+        <!-- Use Font Awesome icons for username and password -->
+        <div class="input-icon"><i class="fas fa-user"></i></div>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <div class="input-icon"><i class="fas fa-lock"></i></div>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p><a href="#">Forgot Password</a></p>
+</div>
+
+<!-- Include Font Awesome JavaScript for icons (optional) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+<script>
+    function submitForm() {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Perform GET request using Fetch API
+        fetch(`http://103.224.241.198:8080/login?username=${username}&password=${password}`)
+            .then(response => response.text())
+            .then(data => {
+                // Update the response message element with the received data
+                //document.getElementById("response").innerHTML = data;
+                console.log(data);
+                if(data!=false){
+                    window.location="https://cvirms.com/new/hotel.html";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+</script>
+</body>
+</html>

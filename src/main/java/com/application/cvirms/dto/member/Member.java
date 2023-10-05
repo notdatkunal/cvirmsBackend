@@ -21,35 +21,35 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+	private String managerName;
 	@Column(nullable = false)
-	@NotNull
 	private String firstName;
-	@NotNull
+
 	@Column(nullable = false)
 	private String middleName;
-	@NotNull
+
 	@Column(nullable = false)
 	private String lastName;
 
 	@Enumerated(EnumType.STRING)
 	private AccountType type;
-	@NotNull
+
 	private String address;
 	@OneToOne
-	@NotNull
+
 	private Location location;
-	@NotNull
+
 	@Column(unique = true,nullable = false)
 	private Long contact;
 	private Long alternateContact;
 	@Column(nullable = false)
-	@NotNull
+
 	private String email;
 	@Column(nullable = false,unique = true)
-	@NotNull
+
 	private String userName;
 	@Column(nullable = false)
-	@NotNull
+
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Status status=Status.INACTIVE;

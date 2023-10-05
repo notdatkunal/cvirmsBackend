@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Location {
+public class    Location {
 
     @Id
     private Integer pincode;

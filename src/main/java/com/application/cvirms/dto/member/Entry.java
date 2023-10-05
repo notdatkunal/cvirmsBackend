@@ -24,10 +24,10 @@ public class Entry {
 //	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //	@JsonIgnore
 //	private Member member;
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Visitor visitor;
-
 	@Lob
 	private List<String> remark;
 

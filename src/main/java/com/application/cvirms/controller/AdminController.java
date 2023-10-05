@@ -16,8 +16,9 @@ public class AdminController {
     @Autowired
     public AdminService service;
 
+
     @PostMapping("/hotel")
-    public void addHotel(@Validated @RequestBody Hotel hotelMember){
+    public void addHotel(@RequestBody Hotel hotelMember){
 
         service.addHotel(hotelMember);
     }

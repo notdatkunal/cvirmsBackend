@@ -56,4 +56,8 @@ public class MemberService {
 
         return new ResponseEntity<>(entries,HttpStatus.FOUND);
     }
+
+    public ResponseEntity<String> getMemberTypeById(Integer memberId) {
+        return new ResponseEntity<>(memberRepository.getReferenceById(memberId).getType().toString(),HttpStatus.OK);
+    }
 }

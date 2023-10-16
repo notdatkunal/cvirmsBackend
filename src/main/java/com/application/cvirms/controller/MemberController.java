@@ -22,18 +22,23 @@ public class MemberController {
 
 
     @Autowired
-//    @Qualifier("tenantMemberService")
     public MemberService service;
     @GetMapping
-    public ResponseEntity<List<HotelEntry>> getVisitors(@PathVariable(required = true) Integer memberId){
-        return service.getVisitorsByHotelId(memberId);  //akash
+    public ResponseEntity<List<HotelEntry>> getVisitorById(@PathVariable(required = true) Integer memberId){
+        return service.getVisitorsByHotelId(memberId);
     }
 
+
+
     @PostMapping("/add")
-    public ResponseEntity addEntry(@RequestBody HotelEntry entry,@PathVariable Integer memberId){
+    public ResponseEntity addEntry(@RequestBody HotelEntry entry,@PathVariable(name = "memberId") Integer memberId){
 
         return service.addEntry(entry,memberId);
 
+    }
+    @GetMapping("/type")
+    public ResponseEntity<String> getMemberTypeById(@PathVariable(name = "memberId") Integer memberId){
+        return service.getMemberTypeById(memberId);
     }
     @GetMapping("/notices")
     public ResponseEntity<List<Notice>> getAllNotices(){

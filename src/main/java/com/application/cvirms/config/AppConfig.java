@@ -17,7 +17,7 @@ public class AppConfig {
                 registry.addMapping("/**")
                         .allowedOrigins("*") // Allow requests from any origin
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow these HTTP methods
-                        .allowedHeaders("*"); // Allow all headers
+                        .allowedHeaders("   *"); // Allow all headers
             }
         };
     }

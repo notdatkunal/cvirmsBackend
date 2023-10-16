@@ -20,20 +20,17 @@ public class Visitor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	@Column(nullable = false)
-//	@NotNull
 	private String firstName;
 	@Column(nullable = false)
-//	@NotNull
 	private String middleName;
 	@Column(nullable = false)
-//	@NotNull
 	private String lastName;
 	@Column(nullable = false)
-//	@NotNull
 	private String gender;
-	@Column(nullable = false,unique = true)
+//	@Column(nullable = false,unique = true)
 	private String email;
-	@Column(nullable = false,unique = true)
+//	@Column(nullable = false,unique = true)
+	@Column(nullable = false)
 	private Long contact;
 	@Column(nullable = false)
 	private String address;

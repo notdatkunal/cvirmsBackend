@@ -1,14 +1,9 @@
 package com.application.cvirms.dto.member;
-//Created by Akash Tripathi
 
 import com.application.cvirms.dto.geography.Location;
-import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 
 @Entity

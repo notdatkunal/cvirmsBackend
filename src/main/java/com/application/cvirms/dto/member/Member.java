@@ -21,6 +21,7 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+	private String name;
 	private String managerName;
 	@Column(nullable = false)
 	private String firstName;
@@ -31,12 +32,13 @@ public class Member {
 	@Column(nullable = false)
 	private String lastName;
 
+	private String profile;
+
 	@Enumerated(EnumType.STRING)
 	private AccountType type;
 
 	private String address;
-	@OneToOne
-
+	@ManyToOne
 	private Location location;
 
 	@Column(unique = true,nullable = false)
@@ -56,6 +58,8 @@ public class Member {
 	@OneToOne
 	private Document document;
 
+	@OneToMany
+	private List<Employee> employees;
 
 //	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "member")
 //	private List<Entry> entries;

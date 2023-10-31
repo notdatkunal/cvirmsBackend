@@ -1,5 +1,6 @@
 package com.application.cvirms.service;
 
+import com.application.cvirms.dto.geography.Location;
 import com.application.cvirms.dto.member.Hotel;
 import com.application.cvirms.repo.DocumentRepository;
 import com.application.cvirms.repo.HotelRepository;
@@ -20,7 +21,22 @@ public class AdminService {
     public DocumentRepository documentrepo;
 
     public void addHotel(Hotel hotelMember) {
-        locationRepository.save(hotelMember.getLocation());
+        System.out.println(hotelMember.getProfile());
+//        locationRepository.save(hotelMember.getLocation());
+        var location = hotelMember.getLocation();
+        var ref = locationRepository.findById(location.getPincode());
+        System.out.println("finding locations");
+        if(ref.isPresent()){
+
+            hotelMember.setLocation(ref.get());
+            System.out.println("location already exists");
+
+        }
+        else{
+            locationRepository.save(hotelMember.getLocation());
+            System.out.println("does not exist");
+        }
+
         memberRepo.save(hotelMember);
         if(hotelMember.getDocument()!= null)
         documentrepo.save(hotelMember.getDocument());

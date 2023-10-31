@@ -3,6 +3,7 @@ package com.application.cvirms.controller;
 import com.application.cvirms.dto.features.Emergency;
 import com.application.cvirms.dto.features.Notice;
 
+import com.application.cvirms.dto.member.Employee;
 import com.application.cvirms.dto.member.HotelEntry;
 import com.application.cvirms.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/member/{memberId}")
@@ -27,7 +30,12 @@ public class MemberController {
     public ResponseEntity<List<HotelEntry>> getVisitorById(@PathVariable(required = true) Integer memberId){
         return service.getVisitorsByHotelId(memberId);
     }
+    @DeleteMapping
+    public void deleteAllEntries(@PathVariable(required = true) Integer memberId){
 
+        service.deleteEntries(memberId);
+
+    }
 
 
     @PostMapping("/add")
@@ -54,7 +62,31 @@ public class MemberController {
         return service.addEmergency(memberId);
     }
 
+    @PostMapping("/employee")
+    public void addEmployee(@PathVariable Integer memberId, @RequestBody Employee e){
+        System.out.println(e);
+        service.addEmployee(e,memberId);
+    }
+    @GetMapping("/employee")
+    public ResponseEntity<List<Employee>> getEmployee(@PathVariable Integer memberId){
 
+        return service.getEmployee(memberId);
+    }
+    
+    @GetMapping("check/{entryId}")
+    public ResponseEntity getEntryById(@PathVariable Integer memberId, @PathVariable Integer entryId){
+        return service.getEntryById(entryId);
+    }
+    @PutMapping("check/{entryId}")
+   public void check(@PathVariable Integer memberId, @PathVariable Integer entryId, @RequestParam(name = "in") String in,@RequestParam(name = "out") String out){
+
+
+        System.out.println(in);
+        System.out.println(out);
+        System.out.println(entryId);
+        System.out.println(memberId);
+        service.check(memberId,entryId,in,out);
+   }
 
 
 }

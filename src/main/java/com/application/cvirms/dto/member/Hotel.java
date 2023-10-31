@@ -22,5 +22,6 @@ public class Hotel extends Member {
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @JsonIgnore
+    @JsonManagedReference
     private List<HotelEntry> entries;
 }

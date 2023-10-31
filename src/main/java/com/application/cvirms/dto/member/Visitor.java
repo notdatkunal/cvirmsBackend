@@ -29,7 +29,7 @@ public class Visitor {
 	private Long contact;
 	@Column(nullable = false)
 	private String address;
-	@OneToOne
+	@ManyToOne
 	private Location location;
 	@OneToOne
 	private Document document;

@@ -18,11 +18,12 @@ public class HotelEntry extends Entry{
 
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonBackReference
     private Hotel member;
 
-    private LocalDate checkIn;
+    private LocalDateTime checkIn;
 
-    private LocalDate checkOut;
-    @OneToMany
+    private LocalDateTime checkOut;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Guest> guests;
 }

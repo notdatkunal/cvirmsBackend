@@ -15,6 +15,7 @@ public class Guest {
 	private Integer Id;
 	@Column(name = "g_name")
 	private String name;
+	private String gender;
 	@ManyToOne
 	private Entry entry;
 

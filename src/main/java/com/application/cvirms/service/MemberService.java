@@ -10,9 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,11 +35,11 @@ public class MemberService {
     @Autowired
     public VisitorRepository visitorRepository;
     @Autowired
-    public HotelRepository memberRepository;
+    public MemberRepository memberRepository;
     @Autowired
     public DocumentRepository documentRepository;
     public ResponseEntity addEntry(HotelEntry entry, Integer memberId){
-        Hotel member = memberRepository.getReferenceById(memberId);
+        Hotel member = (Hotel) memberRepository.getReferenceById(memberId);
 
         Document document = entry.getVisitor().getDocument();
         if(document!=null)
@@ -73,7 +71,7 @@ public class MemberService {
     private EmployeeRepository emp;
     public void addEmployee(Employee e, Integer memberId) {
         emp.save(e);
-        Hotel m = memberRepository.getReferenceById(memberId);
+        Hotel m = (Hotel) memberRepository.getReferenceById(memberId);
         m.getEmployees().add(e);
         memberRepository.save(m);
     }
@@ -88,7 +86,7 @@ public class MemberService {
     public void check(Integer memberId, Integer entryId, String in, String out) {
 
 
-        var member = memberRepository.findById(memberId).get();
+        var member = (Hotel)memberRepository.findById(memberId).get();
         var lists = member.getEntries();
         var entry = lists.get(entryId);
 
@@ -99,7 +97,7 @@ public class MemberService {
     }
 
     public void deleteEntries(Integer memberId) {
-        var member = memberRepository.findById(memberId).get();
+        var member = (Hotel)memberRepository.findById(memberId).get();
         for (var entry : member.getEntries()){
 
             entryRepository.delete(entry);
@@ -125,4 +123,13 @@ public class MemberService {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-}
+    private HotelMemberRepository   hotelMemberRepository;
+
+
+
+    public List<Member> getAllMember() {
+
+            return memberRepository.findAll();
+        }
+    }
+

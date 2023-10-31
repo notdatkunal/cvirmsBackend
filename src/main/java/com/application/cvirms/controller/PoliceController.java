@@ -1,9 +1,11 @@
 package com.application.cvirms.controller;
 
 import com.application.cvirms.dto.features.Flag;
+import com.application.cvirms.service.MemberService;
 import com.application.cvirms.service.PoliceService;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,7 @@ public class PoliceController {
     @Autowired
     private PoliceService service;
 
+
     @PostMapping("/flag")
     public void addFlag(@Validated @RequestBody Flag flag){
         service.addFlag(flag);
@@ -26,4 +29,19 @@ public class PoliceController {
     public List<Flag> getFlags(){
         return service.showFlags();
     }
+
+
+    @GetMapping("/gethotels")
+    public ResponseEntity getHotels()
+    {
+        return service.getHotels();
+    }
+
+    @GetMapping("/gettenants")
+    public ResponseEntity getTenants()
+    {
+        return service.getTenants();
+    }
+
+
 }

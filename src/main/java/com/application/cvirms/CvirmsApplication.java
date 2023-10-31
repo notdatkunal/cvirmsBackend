@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 //@EnableSwagger2
-
 @Import({AppConfig.class, SpringFoxConfig.class})
 //@ComponentScan(basePackages = {"com.application.cvirms.repo","com.application.cvirms.dto","com.application.cvirms.controller"})
 @ComponentScan(basePackages = "com.application.cvirms.*")

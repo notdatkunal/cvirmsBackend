@@ -23,10 +23,8 @@ public class PoliceService {
     private FlagRepository flagRepository;
     @Autowired
     private DocumentRepository documentRepository;
-    @Autowired
-    private HotelMemberRepository hotelMemberRepository;
-    @Autowired
-    private TenantMemberRepository tenantMemberRepository;
+
+
     @Autowired
     private  MemberRepository memberRepository;
 

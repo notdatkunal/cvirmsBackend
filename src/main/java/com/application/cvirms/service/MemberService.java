@@ -123,7 +123,7 @@ public class MemberService {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    private HotelMemberRepository   hotelMemberRepository;
+//    private HotelMemberRepository   hotelMemberRepository;
 
 
 

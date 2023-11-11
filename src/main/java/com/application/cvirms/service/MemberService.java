@@ -7,6 +7,7 @@ import com.application.cvirms.repo.*;
 import com.application.cvirms.templates.HotelEntryTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -127,9 +128,10 @@ public class MemberService {
 
 
 
-    public List<Member> getAllMember() {
 
-            return memberRepository.findAll();
-        }
+
+    public ResponseEntity<Hotel> getProfile(Integer memberId) {
+        return new ResponseEntity<>((Hotel)( memberRepository.findById(memberId).orElseThrow()), HttpStatusCode.valueOf(200));
     }
+}
 

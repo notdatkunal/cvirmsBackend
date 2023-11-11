@@ -4,6 +4,7 @@ import com.application.cvirms.dto.features.Emergency;
 import com.application.cvirms.dto.features.Notice;
 
 import com.application.cvirms.dto.member.Employee;
+import com.application.cvirms.dto.member.Hotel;
 import com.application.cvirms.dto.member.HotelEntry;
 import com.application.cvirms.dto.member.Member;
 import com.application.cvirms.service.MemberService;
@@ -28,6 +29,10 @@ public class MemberController {
     @GetMapping
     public ResponseEntity<List<HotelEntry>> getVisitorById(@PathVariable(required = true) Integer memberId){
         return service.getVisitorsByHotelId(memberId);
+    }
+    @GetMapping("/profile")
+    public ResponseEntity<Hotel> getProfile(@PathVariable(required = true) Integer memberId){
+        return service.getProfile(memberId);
     }
     @DeleteMapping
     public void deleteAllEntries(@PathVariable(required = true) Integer memberId){
@@ -86,11 +91,6 @@ public class MemberController {
         System.out.println(memberId);
         service.check(memberId,entryId,in,out);
    }
-    @GetMapping("/fetchAll")
-    public List<Member> getAllMember()
-    {
-        return service.getAllMember();
 
-    }
 
 }

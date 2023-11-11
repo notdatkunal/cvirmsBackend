@@ -22,6 +22,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	private String name;
+	private String gender;
 	private String managerName;
 	@Column(nullable = false)
 	private String firstName;

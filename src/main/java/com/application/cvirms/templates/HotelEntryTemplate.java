@@ -1,10 +1,7 @@
 package com.application.cvirms.templates;
 
 import com.application.cvirms.dto.geography.Location;
-import com.application.cvirms.dto.member.Document;
-import com.application.cvirms.dto.member.Guest;
-import com.application.cvirms.dto.member.Hotel;
-import com.application.cvirms.dto.member.HotelEntry;
+import com.application.cvirms.dto.member.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -27,19 +24,14 @@ public class HotelEntryTemplate {
     private Document document;
     private String vehicleNumber;
     private Hotel member;
-
-
-//    private HotelEntry entry;
     private LocalDateTime checkIn;
     private LocalDateTime checkOut;
     private List<Guest> guests;
     private List<String> remark;
 
         public static HotelEntryTemplate getInstance(HotelEntry entry){
-            var instance = new HotelEntryTemplate();
-            var member = entry.getMember();
-//            member.setEntries(new LinkedList<>());
-//            instance.setMember(member);
+            HotelEntryTemplate instance = new HotelEntryTemplate();
+            Hotel member = entry.getMember();
             instance.setFirstName(entry.getVisitor().getFirstName());
             instance.setMiddleName(entry.getVisitor().getMiddleName());
             instance.setLastName(entry.getVisitor().getLastName());

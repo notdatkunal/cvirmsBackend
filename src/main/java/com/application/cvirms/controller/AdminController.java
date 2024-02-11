@@ -1,10 +1,8 @@
 package com.application.cvirms.controller;
 
 import com.application.cvirms.dto.member.Hotel;
-import com.application.cvirms.dto.member.Member;
 import com.application.cvirms.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

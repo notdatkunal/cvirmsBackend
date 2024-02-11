@@ -3,6 +3,7 @@ package com.application.cvirms.service;
 import com.application.cvirms.dto.features.Emergency;
 import com.application.cvirms.dto.features.Notice;
 import com.application.cvirms.dto.member.*;
+import com.application.cvirms.exception.IdNotFoundException;
 import com.application.cvirms.repo.*;
 import com.application.cvirms.templates.HotelEntryTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -50,9 +52,8 @@ public class MemberService {
         entries.add(entry);
 
 
-//        memberRepository.save(member);
         entryRepository.save(entry);
-//        visitorRepository.save(entry.getVisitor());
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -87,9 +88,9 @@ public class MemberService {
     public void check(Integer memberId, Integer entryId, String in, String out) {
 
 
-        var member = (Hotel)memberRepository.findById(memberId).get();
-        var lists = member.getEntries();
-        var entry = lists.get(entryId);
+        Hotel member = (Hotel)memberRepository.findById(memberId).get();
+        List<HotelEntry> lists = member.getEntries();
+        HotelEntry entry = lists.get(entryId);
 
         entry.setCheckIn(LocalDateTime.parse(in));
         entry.setCheckOut(LocalDateTime.parse(out));
@@ -98,8 +99,8 @@ public class MemberService {
     }
 
     public void deleteEntries(Integer memberId) {
-        var member = (Hotel)memberRepository.findById(memberId).get();
-        for (var entry : member.getEntries()){
+        Hotel member = memberRepository.findById(memberId).get();
+        for (HotelEntry entry : member.getEntries()){
 
             entryRepository.delete(entry);
 
@@ -111,9 +112,9 @@ public class MemberService {
 
     public ResponseEntity getEntryById(Integer entryId) {
 
-        var entryData = entryRepository.findById(entryId);
+        Optional<HotelEntry> entryData = entryRepository.findById(entryId);
         try {
-            var entry = entryData.get();
+            HotelEntry entry = entryData.get();
             HotelEntryTemplate temp =  HotelEntryTemplate.getInstance(entry);
 
             return ResponseEntity.ok(temp);
@@ -124,14 +125,13 @@ public class MemberService {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-//    private HotelMemberRepository   hotelMemberRepository;
 
 
 
 
 
     public ResponseEntity<Hotel> getProfile(Integer memberId) {
-        return new ResponseEntity<>((Hotel)( memberRepository.findById(memberId).orElseThrow()), HttpStatusCode.valueOf(200));
+        return new ResponseEntity<>((Hotel)( memberRepository.findById(memberId).orElseThrow(IdNotFoundException::new)), HttpStatusCode.valueOf(200));
     }
 }
 

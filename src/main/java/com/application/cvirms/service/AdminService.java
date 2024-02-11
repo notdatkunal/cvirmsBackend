@@ -8,7 +8,10 @@ import com.application.cvirms.repo.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
@@ -22,13 +25,12 @@ public class AdminService {
 
     public void addHotel(Hotel hotelMember) {
         System.out.println(hotelMember.getProfile());
-//        locationRepository.save(hotelMember.getLocation());
-        var location = hotelMember.getLocation();
-        var ref = locationRepository.findById(location.getPincode());
+        Location location = hotelMember.getLocation();
+        Optional ref = locationRepository.findById(location.getPincode());
         System.out.println("finding locations");
         if(ref.isPresent()){
 
-            hotelMember.setLocation(ref.get());
+            hotelMember.setLocation((Location) ref.get());
             System.out.println("location already exists");
 
         }

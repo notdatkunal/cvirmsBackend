@@ -3,6 +3,7 @@ package com.application.cvirms.service;
 import com.application.cvirms.dto.features.Flag;
 import com.application.cvirms.dto.member.AccountType;
 import com.application.cvirms.dto.member.Hotel;
+import com.application.cvirms.dto.member.HotelEntry;
 import com.application.cvirms.dto.member.Member;
 import com.application.cvirms.repo.*;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 @Service
@@ -40,8 +43,8 @@ public class PoliceService {
 
     public ResponseEntity getHotels() {
 
-        var members = memberRepository.findAll();
-        var hotels = new LinkedList<Hotel>();
+        List<Hotel> members = memberRepository.findAll();
+        List<Hotel> hotels = new LinkedList<Hotel>();
         Consumer<Member> consumer = member->{
             if("HOTEL".equals(((Hotel)member).getType().toString())){
 
@@ -56,8 +59,8 @@ public class PoliceService {
 
 
     public ResponseEntity getTenants() {
-        var members = memberRepository.findAll();
-        var tenants = new LinkedList<Hotel>();
+        List<Hotel> members = memberRepository.findAll();
+        List<Hotel> tenants = new LinkedList<Hotel>();
         Consumer<Member> consumer = member->{
             if("TENANT".equals(((Hotel)member).getType().toString())){
                 tenants.add((Hotel)member);

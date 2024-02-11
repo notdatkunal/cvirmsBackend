@@ -43,8 +43,10 @@ public class PoliceService {
         var members = memberRepository.findAll();
         var hotels = new LinkedList<Hotel>();
         Consumer<Member> consumer = member->{
-            if(member.getType().equals(AccountType.HOTEL))
+            if("HOTEL".equals(((Hotel)member).getType().toString())){
+
                 hotels.add((Hotel)member);
+            }
 
         };
         members.forEach(consumer);
@@ -57,8 +59,10 @@ public class PoliceService {
         var members = memberRepository.findAll();
         var tenants = new LinkedList<Hotel>();
         Consumer<Member> consumer = member->{
-            if(member.getType().equals(AccountType.TENANT))
+            if("TENANT".equals(((Hotel)member).getType().toString())){
                 tenants.add((Hotel)member);
+
+            }
 
         };
         members.forEach(consumer);
